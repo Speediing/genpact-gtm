@@ -1,10 +1,18 @@
-# Grok Bot for Datadog GTM
+# Genpact x SpaceXAI
 
-Passworded site. Grok Bot from SpaceXAI, for Datadog GTM.
+Passworded Grok Bot leave-behind for Genpact sales.
 
 ## What it is
 
-Three GTM jobs on one page. Each job has a short problem statement, an interactive Grok Bot demo, and the matching Krista Letz clips under that demo. Below that: a light index of the clips and the public Grok Bot quote wall.
+The page shows three example sales jobs:
+
+- Keep the open deck current during a client meeting.
+- Answer buyer questions from approved material.
+- Research a target account and prepare draft outreach.
+
+Each job includes an interactive Grok Bot walkthrough and a matching product
+clip. The page also includes an agent-team view, product comparison, public
+Grok Bot testimonials, and the Cursor contact for Genpact.
 
 ## Run locally
 
@@ -28,4 +36,5 @@ gh release download krista-gtm-clips-720p-2026-08-26 \
 
 ## Deploy
 
-Preview only under the `jasonwiker` Vercel team, project name `datadog-cro`. Set `SITE_PASSWORD=land2expand`. Do not promote to a public production domain until Jason says so.
+Set `SITE_PASSWORD` in the deployment environment. Keep the deployment private
+until the account owner approves a public URL.

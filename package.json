@@ -1,12 +1,13 @@
 {
-  "name": "datadog-cro",
+  "name": "genpact-gtm",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "verify:residue": "node scripts/verify-residue.mjs"
   },
   "dependencies": {
     "geist": "^1.7.2",

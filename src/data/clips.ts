@@ -28,7 +28,7 @@ export const CLIPS: Record<ClipId, Clip> = {
   "03-slides-granola": clip(
     "03-slides-granola",
     "Slides from the room",
-    "Granola is in. Slides writes the What we heard cards while she is still on the call.",
+    "Granola is in. Slides writes the client-priority cards while the call is still live.",
   ),
   "04-engineer-bugbot": clip(
     "04-engineer-bugbot",

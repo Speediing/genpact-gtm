@@ -9,9 +9,9 @@ export type ClipId =
   | "08-chief-groupchat";
 
 export type JobId =
-  | "standardize-room"
-  | "legal-redlines"
-  | "attach-engine";
+  | "live-meeting"
+  | "buyer-response"
+  | "account-research";
 
 export type ParticipantRole = "you" | "bot";
 
@@ -56,8 +56,8 @@ export type StoryVisual =
   | {
       kind: "live-transcript";
       timestamp: string;
-      speaker: string;
-      quote: string;
+      label: string;
+      note: string;
       signals: string[];
     }
   | {
@@ -235,7 +235,7 @@ export type Clip = {
   caption: string;
 };
 
-export type CroJob = {
+export type SalesJob = {
   id: JobId;
   number: number;
   title: string;

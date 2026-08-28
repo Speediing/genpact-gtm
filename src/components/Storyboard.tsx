@@ -151,10 +151,10 @@ function LiveVisual({ visual }: { visual: StoryVisual }) {
             <strong>Live transcript</strong>
             <span>{visual.timestamp}</span>
           </header>
-          <blockquote>
-            <strong>{visual.speaker}</strong>
-            “{visual.quote}”
-          </blockquote>
+          <div className="story-transcript-note">
+            <strong>{visual.label}</strong>
+            <span>{visual.note}</span>
+          </div>
           <footer>
             {visual.signals.map((signal) => (
               <span key={signal}>{signal}</span>
@@ -185,7 +185,7 @@ function LiveVisual({ visual }: { visual: StoryVisual }) {
             <span>5:27 AM</span>
           </header>
           <div className="story-email-body">
-            <span className="story-avatar">JH</span>
+            <span className="story-avatar">CQ</span>
             <p>
               <strong>{visual.sender}</strong>
               <small>{visual.subject}</small>

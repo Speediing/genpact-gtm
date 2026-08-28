@@ -2,6 +2,7 @@ import { CompareTable } from "@/components/CompareTable";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
+import { RosterChart } from "@/components/RosterChart";
 import { SiteNav } from "@/components/SiteNav";
 import { JOBS } from "@/data/jobs";
 
@@ -9,38 +10,35 @@ export default function HomePage() {
   return (
     <main id="top">
       <div className="hero-watercolor">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className="hero-watercolor-image"
-          src="/brand/watercolor-pad.png"
-          alt=""
-        />
         <SiteNav />
       </div>
 
       <div className="report">
         <div className="report-hero">
           <HeroTelemetry />
+          <div className="hero-paper-band">
+            <span>Genpact sales</span>
+            <span>Sample workflows</span>
+            <span>Seller approval stays in the loop</span>
+          </div>
           <section className="hero">
             <div>
-              <p className="eyebrow">A proactive agent for every Datadog rep</p>
-              <h1>The agents that work while your reps sell.</h1>
+              <p className="eyebrow">Genpact x SpaceXAI</p>
+              <h1>Give every seller an agent team with its own computers.</h1>
               <p className="hero-intro">
                 Grok Bot listens to calls, watches the inbox, and researches
-                accounts in the background. Work triggers it — not another
-                prompt.
+                accounts in the background. The work starts it. Sellers review
+                every draft before it goes out.
               </p>
             </div>
           </section>
 
           <section className="usecase-framing">
-            <p className="eyebrow">Three sample use cases</p>
+            <p className="eyebrow">Three sample workflows</p>
             <h2>
-              Grok Bot gives every seller their own fleet of always-available
-              agent teammates. Anything your sellers do today can be done
-              through Grok Bot.
+              Start with the work around the client conversation.
             </h2>
-            <p>These are three examples from millions — not the boundary.</p>
+            <p>Each example ends with a draft the seller can inspect and approve.</p>
           </section>
 
           <div className="metric-grid">
@@ -60,6 +58,8 @@ export default function HomePage() {
           </div>
         </div>
 
+        <RosterChart />
+
         <div id="jobs">
           {JOBS.map((job) => (
             <JobSection key={job.id} job={job} />
@@ -67,10 +67,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="orbit-break" aria-hidden>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/watercolor-orbit.png" alt="" />
-      </div>
+      <div className="orbit-break" aria-hidden />
 
       <div className="report">
         <CompareTable />
@@ -79,14 +76,14 @@ export default function HomePage() {
 
       <footer className="site-footer">
         <div>
-          <p className="footer-title">Cursor for Datadog</p>
-          <p>Grok Bot for Datadog sales</p>
+          <p className="footer-title">Cursor for Genpact</p>
+          <p>Grok Bot for Genpact sales</p>
         </div>
         <address className="footer-contact">
-          <p>Datadog&apos;s existing Cursor contact</p>
-          <strong>Madeline Ingleby</strong>
-          <a href="mailto:madeline.ingleby@cursor.com">
-            madeline.ingleby@cursor.com
+          <p>Your Cursor contact</p>
+          <strong>Nick Scallion</strong>
+          <a href="mailto:nick.scallion@cursor.com">
+            nick.scallion@cursor.com
           </a>
         </address>
       </footer>

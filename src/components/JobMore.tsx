@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import type { CroJob } from "@/data/types";
+import type { SalesJob } from "@/data/types";
 import { CLIPS } from "@/data/clips";
 import { ClipFigure } from "./ClipFigure";
 import { JobDemo } from "./JobDemo";
 
-export function JobMore({ job }: { job: CroJob }) {
+export function JobMore({ job }: { job: SalesJob }) {
   const [open, setOpen] = useState(false);
 
   return (
