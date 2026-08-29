@@ -11,6 +11,7 @@ export default function HomePage() {
   return (
     <main id="top">
       <div className="hero-watercolor">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="hero-watercolor-image"
           src="/brand/watercolor-pad.png"
