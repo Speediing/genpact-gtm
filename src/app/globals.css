@@ -778,8 +778,9 @@ button:active:not(:focus-visible),
 
 .hero-phone-header strong {
   overflow: hidden;
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 620;
+  letter-spacing: -0.02em;
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1.15;
