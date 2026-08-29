@@ -83,4 +83,70 @@ if (violations.length) {
   process.exit(1);
 }
 
+function fail(message) {
+  console.error(message);
+  process.exit(1);
+}
+
+const heroJobsPath = "src/data/hero-jobs.ts";
+const heroDemoPath = "src/components/HeroDemo.tsx";
+const pagePath = "src/app/(protected)/page.tsx";
+const cssPath = "src/app/globals.css";
+
+for (const file of [heroJobsPath, heroDemoPath]) {
+  if (!existsSync(resolve(root, file))) {
+    fail(`missing ${file}`);
+  }
+}
+
+const heroJobsSource = readFileSync(resolve(root, heroJobsPath), "utf8");
+if (!heroJobsSource.includes("HERO_JOBS")) {
+  fail(`${heroJobsPath} must define HERO_JOBS`);
+}
+
+const heroJobEntries = heroJobsSource.match(/\bid:\s*["'`]/g) ?? [];
+if (heroJobEntries.length !== 8) {
+  fail(
+    `${heroJobsPath} must contain exactly 8 HERO_JOBS entries, found ${heroJobEntries.length}`,
+  );
+}
+
+const pageSource = readFileSync(resolve(root, pagePath), "utf8");
+const normalizedPage = pageSource.replace(/\s+/g, "");
+if (!normalizedPage.includes('<sectionclassName="hero"><HeroDemo/></section>')) {
+  fail(
+    `${pagePath} hero section must be exactly <section className="hero"><HeroDemo /></section>`,
+  );
+}
+
+const requiredClasses = [
+  "hero-copy",
+  "hero-phone-jobs",
+  "hero-bot-demo",
+  "hero-phone",
+  "hero-phone-notch",
+  "hero-phone-header",
+  "hero-phone-back",
+  "hero-phone-agent",
+  "hero-phone-desktop",
+  "hero-phone-thread",
+  "hero-phone-work",
+  "hero-phone-work-label",
+  "hero-phone-work-meta",
+  "hero-phone-work-copy",
+  "hero-phone-message",
+  "is-user",
+  "is-bot",
+  "hero-phone-composer",
+];
+
+const heroDemoSource = readFileSync(resolve(root, heroDemoPath), "utf8");
+const cssSource = readFileSync(resolve(root, cssPath), "utf8");
+const missing = requiredClasses.filter(
+  (name) => !heroDemoSource.includes(name) || !cssSource.includes(name),
+);
+if (missing.length) {
+  fail(`hero markup or CSS is missing: ${missing.join(", ")}`);
+}
+
 console.log(`Residue check passed across ${files.length} tracked text files.`);

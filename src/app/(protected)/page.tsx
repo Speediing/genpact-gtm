@@ -1,4 +1,5 @@
 import { CompareTable } from "@/components/CompareTable";
+import { HeroDemo } from "@/components/HeroDemo";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
@@ -22,15 +23,7 @@ export default function HomePage() {
             <span>Seller approval stays in the loop</span>
           </div>
           <section className="hero">
-            <div>
-              <p className="eyebrow">Genpact x SpaceXAI</p>
-              <h1>Give every seller an agent team with its own computers.</h1>
-              <p className="hero-intro">
-                Grok Bot listens to calls, watches the inbox, and researches
-                accounts in the background. The work starts it. Sellers review
-                every draft before it goes out.
-              </p>
-            </div>
+            <HeroDemo />
           </section>
 
           <section className="usecase-framing">
