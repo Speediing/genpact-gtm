@@ -11,6 +11,11 @@ export default function HomePage() {
   return (
     <main id="top">
       <div className="hero-watercolor">
+        <img
+          className="hero-watercolor-image"
+          src="/brand/watercolor-pad.png"
+          alt=""
+        />
         <SiteNav />
       </div>
 

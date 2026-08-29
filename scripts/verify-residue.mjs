@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { extname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -140,6 +141,17 @@ const requiredClasses = [
   "hero-phone-composer",
 ];
 
+const requiredAssets = [
+  {
+    path: "public/brand/watercolor-pad.png",
+    bytes: 1848701,
+    sha256: "2586906afb760c70fb365c793026cb7f387daea8531fa9dcd9f46bfe6c0a7d2d",
+    markup: '<img className="hero-watercolor-image"',
+    src: "/brand/watercolor-pad.png",
+    selector: ".hero-watercolor-image",
+  },
+];
+
 const heroDemoSource = readFileSync(resolve(root, heroDemoPath), "utf8");
 const cssSource = readFileSync(resolve(root, cssPath), "utf8");
 const missing = requiredClasses.filter(
@@ -147,6 +159,32 @@ const missing = requiredClasses.filter(
 );
 if (missing.length) {
   fail(`hero markup or CSS is missing: ${missing.join(", ")}`);
+}
+
+for (const asset of requiredAssets) {
+  const absolute = resolve(root, asset.path);
+  if (!existsSync(absolute)) {
+    fail(`missing ${asset.path}`);
+  }
+  const size = statSync(absolute).size;
+  if (size !== asset.bytes) {
+    fail(`${asset.path} must be ${asset.bytes} bytes, found ${size}`);
+  }
+  const sha256 = createHash("sha256")
+    .update(readFileSync(absolute))
+    .digest("hex");
+  if (sha256 !== asset.sha256) {
+    fail(`${asset.path} does not match the source asset`);
+  }
+  if (!normalizedPage.includes(asset.markup.replace(/\s+/g, ""))) {
+    fail(`${pagePath} must include ${asset.markup}`);
+  }
+  if (!normalizedPage.includes(`src="${asset.src}"`)) {
+    fail(`${pagePath} must use local src="${asset.src}"`);
+  }
+  if (!cssSource.includes(asset.selector)) {
+    fail(`${cssPath} must include ${asset.selector}`);
+  }
 }
 
 console.log(`Residue check passed across ${files.length} tracked text files.`);

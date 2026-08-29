@@ -409,38 +409,15 @@ button:active:not(:focus-visible),
   width: 100%;
   height: clamp(17rem, 28vw, 26rem);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 12% 35%, rgba(255, 190, 70, 0.68), transparent 30%),
-    radial-gradient(ellipse at 68% 18%, rgba(255, 85, 95, 0.72), transparent 32%),
-    radial-gradient(ellipse at 86% 78%, rgba(111, 128, 113, 0.58), transparent 34%),
-    linear-gradient(125deg, #f4c98e 0%, #ef8177 48%, #30392f 100%);
+  background: #1a1b18;
 }
 
-.hero-watercolor::before,
-.hero-watercolor::after {
-  position: absolute;
-  content: "";
-  filter: blur(34px);
-  mix-blend-mode: soft-light;
-  opacity: 0.86;
-}
-
-.hero-watercolor::before {
-  inset: -22% 32% 18% -12%;
-  background:
-    repeating-radial-gradient(
-      ellipse at center,
-      rgba(255, 250, 244, 0.76) 0 5%,
-      transparent 7% 13%
-    );
-  transform: rotate(-8deg) scale(1.25);
-}
-
-.hero-watercolor::after {
-  inset: 18% -8% -30% 24%;
-  background:
-    radial-gradient(ellipse at center, rgba(22, 25, 22, 0.52), transparent 62%);
-  transform: rotate(7deg);
+.hero-watercolor-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
 }
 
 .hero-telemetry {
